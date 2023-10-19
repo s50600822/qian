@@ -28,11 +28,11 @@ plt.tight_layout()
 chart_file = "eur_value_chart.png"
 plt.savefig(chart_file)
 
-chart_data = {
-    "dates": dates,
-    "values": values
-}
+# chart_data = {
+#     "dates": dates,
+#     "values": values
+# }
 
-chart_data_file = "eur_value_chart_data.json"
-with open(chart_data_file, 'w') as data_file:
-    json.dump(chart_data, data_file)
+# chart_data_file = "eur_value_chart_data.json"
+# with open(chart_data_file, 'w') as data_file:
+#     json.dump(chart_data, data_file)
