@@ -29,8 +29,8 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git config --global credential.helper store
-          echo "https://github.com ${PAT}:x-oauth-basic" > ~/.git-credentials          
+          #git config --global credential.helper store
+          #echo "https://github.com ${PAT}:x-oauth-basic" > ~/.git-credentials          
           git add .
           git commit -m "Update JSON file [skip ci]"
           git push
