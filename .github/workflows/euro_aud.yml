@@ -1,4 +1,4 @@
-name: Hourly HTTP GET and Commit
+name: EURO-AUD
 
 on:
   schedule:
@@ -19,6 +19,7 @@ jobs:
           timestamp="$(date +'%Y%m%d%H%M%S')"
           curl -s -o "${timestamp}.json" "https://api.freecurrencyapi.com/v1/latest?apikey=${FREECURRENCYAPI}&currencies=EUR&base_currency=AUD"
           ls -lrt
+          cat "${timestamp}.json"
 
       - name: Commit changes
         run: |
