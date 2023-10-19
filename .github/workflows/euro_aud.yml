@@ -22,7 +22,9 @@ jobs:
           curl -s -o "${timestamp}.json" "https://api.freecurrencyapi.com/v1/latest?apikey=${FREECURRENCYAPI}&currencies=EUR&base_currency=AUD"
           ls -lrt
           cat "${timestamp}.json"
-
+          pip install matplotlib
+          python plot.py
+          
       - name: Commit changes
         run: |
           git config --global user.email "s50600822@gmail.com"
