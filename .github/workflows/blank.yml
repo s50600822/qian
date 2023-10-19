@@ -1,0 +1,29 @@
+name: Hourly HTTP GET and Commit
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # every hour
+  workflow_dispatch:
+
+jobs:
+  http_request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Make HTTP GET request
+        run: |
+          # Make the HTTP GET request and save it to a JSON file with a timestamp in the filename
+          timestamp="$(date +'%Y%m%d%H%M%S')"
+          api_key="$FREECURRENCYAPI"  # Retrieve the API key from the GitHub secret
+          curl -s -o "${timestamp}.json" "https://api.freecurrencyapi.com/v1/latest?apikey=$api_key&currencies=EUR&base_currency=AUD"
+
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add "${timestamp}.json"
+          git commit -m "Update JSON file [skip ci]"
+          git push
