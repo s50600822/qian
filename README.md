@@ -1,2 +1,5 @@
 # qian
-wo mei qian :v
+
+
+![EURO-AUD](eur_value_chart.png)
+
