@@ -19,6 +19,7 @@ jobs:
           timestamp="$(date +'%Y%m%d%H%M%S')"
           api_key="$FREECURRENCYAPI"  # Retrieve the API key from the GitHub secret
           curl -s -o "${timestamp}.json" "https://api.freecurrencyapi.com/v1/latest?apikey=$api_key&currencies=EUR&base_currency=AUD"
+          ls -lrt
 
       - name: Commit changes
         run: |
