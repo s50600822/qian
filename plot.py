@@ -3,8 +3,12 @@ import re
 import matplotlib.pyplot as plt
 import requests
 from datetime import datetime
+import os
 
-# Make the HTTP GET request
+
+FREECURRENCYAPI = os.environ.get('FREECURRENCYAPI')
+if not FREECURRENCYAPI:
+    raise ValueError("API key not found in environment variables")
 response = requests.get(f"https://api.freecurrencyapi.com/v1/latest?apikey=${FREECURRENCYAPI}&currencies=EUR&base_currency=AUD")
 data = response.json()
 
@@ -35,10 +39,13 @@ dates = []
 values = []
 
 for entry in consolidated_data:
-    date = entry["date"]
-    eur_value = entry["data"]["EUR"]
-    dates.append(date)
-    values.append(eur_value)
+    try:
+        date = entry["date"]
+        eur_value = entry["data"]["EUR"]
+        dates.append(date)
+        values.append(eur_value)
+    except KeyError as e:
+        print(f"KeyError: {e} in entry: {entry}")
 
 plt.figure(figsize=(10, 5))
 plt.plot(dates, values, marker='o')
