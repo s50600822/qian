@@ -9124,5 +9124,11 @@
       "EUR": 0.615649374
     },
     "date": "20231220221313"
+  },
+  {
+    "date": "20231224131538",
+    "data": {
+      "message": "Invalid authentication credentials"
+    }
   }
 ]
