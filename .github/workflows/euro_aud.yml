@@ -18,10 +18,10 @@ jobs:
           FREECURRENCYAPI: ${{ secrets.FREECURRENCYAPI }}      
         run: |
           # Make the HTTP GET request and save it to a JSON file with a timestamp in the filename
-          timestamp="$(date +'%Y%m%d%H%M%S')"
-          curl -s -o "${timestamp}.json" "https://api.freecurrencyapi.com/v1/latest?apikey=${FREECURRENCYAPI}&currencies=EUR&base_currency=AUD"
-          ls -lrt
-          cat "${timestamp}.json"
+          # timestamp="$(date +'%Y%m%d%H%M%S')"
+          # curl -s -o "${timestamp}.json" "https://api.freecurrencyapi.com/v1/latest?apikey=${FREECURRENCYAPI}&currencies=EUR&base_currency=AUD"
+          # ls -lrt
+          # cat "${timestamp}.json"
           pip install matplotlib
           python plot.py
           
